@@ -1,23 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import InputWithName from './InputWithName';
 
 function App() {
-  const [name, setName] = useState('');
-  useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get('https://random-data-api.com/api/users/random_user');
-      setName(response.data.first_name);
-    }
-    fetchData();
-  }, []);
-
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <input type="text" placeholder="Enter your name" onChange={(e) => setName(e.target.value)} value={name} />
+        <InputWithName />
         <p>
           Hola Mundo!
         </p>
