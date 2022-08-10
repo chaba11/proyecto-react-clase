@@ -17,7 +17,6 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <InputWithName />
         <MyButton contador={contador} handleClick={handleClick} />
-        <MyButton />
         <p>
           Hola Mundo!
         </p>

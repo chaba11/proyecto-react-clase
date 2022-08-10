@@ -1,16 +1,16 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function MyButton() {
-  const [contador, setContador] = useState(0);
-
-  function handleClick() {
-    setContador(contador + 1);
-  }
-
+export default function MyButton(props) {
+  const { contador, handleClick } = props;
   return (
     <button type="button" onClick={handleClick}>
       Clickeado {contador} veces
     </button>
   );
 }
+MyButton.propTypes = {
+  contador: PropTypes.number.isRequired,
+  handleClick: PropTypes.func.isRequired,
+};
