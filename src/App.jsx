@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import InputWithName from './InputWithName';
-import MyButton from './components/MyButton/MyButton';
+import MyButton from './common/MyButton/MyButton';
 
 function App() {
   const [contador, setContador] = useState(0);

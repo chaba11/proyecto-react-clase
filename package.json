@@ -28,7 +28,8 @@
       "airbnb"
     ],
     "rules": {
-      "linebreak-style": "off"
+      "linebreak-style": "off",
+      "import/prefer-default-export": "off"
     }
   },
   "browserslist": {
