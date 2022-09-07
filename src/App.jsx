@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import InputWithName from './InputWithName';
-import MyButton from './MyButton';
+import MyButton from './components/MyButton/MyButton';
 
 function App() {
   const [contador, setContador] = useState(0);
@@ -20,6 +20,7 @@ function App() {
         <p>
           Hola Mundo!
         </p>
+        {process.env.NODE_ENV}
         <a
           className="App-link"
           href="https://reactjs.org"
