@@ -16,6 +16,15 @@ class ExampleController {
       example: serializedExample,
     });
   }
+
+  static async getPokemon() {
+    try {
+      const response = await ApiService.get(`${API_ROUTES.POKEMON}/asvf`);
+      return response.data;
+    } catch (error) {
+      return { error: error.message, status: error.status, code: error.code };
+    }
+  }
 }
 
 export { ExampleController };
