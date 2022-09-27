@@ -2,6 +2,7 @@
 import axios from 'axios';
 
 import { constants } from '../config/constants';
+import StorageHelper from '../utils/local-storage-helper';
 import { ApiError } from './api-error';
 
 const METHODS = {
@@ -18,6 +19,41 @@ class ApiServiceClass {
       baseURL: constants.apiBaseURL,
     });
     this._addedHeaders = {};
+    this.axios.interceptors.request.use((config) => {
+      const token = StorageHelper.getLocalAccessToken();
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    });
+    this.axios.interceptors.response.use(
+      (res) => res,
+      async (err) => {
+        const originalConfig = err.config;
+
+        if (originalConfig.url !== '/auth/signin' && err.response) {
+          // Access Token was expired
+          if (err.response.status === 401 && !originalConfig._retry) {
+            originalConfig._retry = true;
+
+            try {
+              const rs = await this.axios.post('/auth/refreshtoken', {
+                refreshToken: StorageHelper.getLocalRefreshToken(),
+              });
+
+              const { accessToken } = rs.data;
+              StorageHelper.updateLocalAccessToken(accessToken);
+
+              return this.axios(originalConfig);
+            } catch (_error) {
+              return Promise.reject(_error);
+            }
+          }
+        }
+
+        return Promise.reject(err);
+      },
+    );
   }
 
   async _sendRequest(method, url, config = {}) {

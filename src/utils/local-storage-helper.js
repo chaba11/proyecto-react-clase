@@ -25,7 +25,7 @@ const removeUser = () => {
   localStorage.removeItem('user');
 };
 
-const TokenService = {
+const StorageHelper = {
   getLocalRefreshToken,
   getLocalAccessToken,
   updateLocalAccessToken,
@@ -34,4 +34,4 @@ const TokenService = {
   removeUser,
 };
 
-export default TokenService;
+export default StorageHelper;
