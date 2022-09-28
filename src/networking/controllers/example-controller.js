@@ -20,7 +20,7 @@ class ExampleController {
 
   static async getPokemon() {
     try {
-      const response = await ApiService.get(`${API_ROUTES.POKEMON}/asvf`, { headers: { Authorization: `Bearer ${StorageHelper.getLocalRefreshToken()}` } });
+      const response = await ApiService.get(`${API_ROUTES.POKEMON}/pikachu`, { headers: { Authorization: `Bearer ${StorageHelper.getLocalRefreshToken()}` } });
       return response.data;
     } catch (error) {
       return { error: error.message, status: error.status, code: error.code };

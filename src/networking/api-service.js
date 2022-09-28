@@ -19,20 +19,13 @@ class ApiServiceClass {
       baseURL: constants.apiBaseURL,
     });
     this._addedHeaders = {};
-    this.axios.interceptors.request.use((config) => {
-      const token = StorageHelper.getLocalAccessToken();
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
-      return config;
-    });
     this.axios.interceptors.response.use(
       (res) => res,
       async (err) => {
         const originalConfig = err.config;
 
         if (originalConfig.url !== '/auth/signin' && err.response) {
-          // Access Token was expired
+          // Access Token expirado
           if (err.response.status === 401 && !originalConfig._retry) {
             originalConfig._retry = true;
 
