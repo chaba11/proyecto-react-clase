@@ -13,7 +13,7 @@ root.render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/input" element={<InputWithName />} />
-      <Route path="/pokemon" element={<Pokemon />} />
+      <Route path="/pokemon/:name" element={<Pokemon />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </BrowserRouter>,
