@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import InputWithName from './InputWithName';
 import { NotFound } from './pages/notFound';
+import Context from './pages/context/Context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,6 +13,7 @@ root.render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/input" element={<InputWithName />} />
+      <Route path="/context" element={<Context />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </BrowserRouter>,
