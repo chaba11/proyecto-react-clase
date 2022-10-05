@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import InputWithName from './InputWithName';
 import { NotFound } from './pages/notFound';
 import { Pokemon } from './pages/pokemon/Pokemon';
+import Context from './pages/context/Context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,6 +15,7 @@ root.render(
       <Route path="/" element={<App />} />
       <Route path="/input" element={<InputWithName />} />
       <Route path="/pokemon/:name" element={<Pokemon />} />
+      <Route path="/context" element={<Context />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </BrowserRouter>,
