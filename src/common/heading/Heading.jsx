@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable prefer-template */
-import React from 'react';
+import React, { useContext } from 'react';
+import { LevelContext } from '../../context/LevelContext';
 import styles from './Heading.module.scss';
 
-export default function Heading({ level, children }) {
+export default function Heading({ children }) {
+  const level = useContext(LevelContext);
   switch (level) {
     case 1:
       return <h1 className={styles.h1}>{children}</h1>;
